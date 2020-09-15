@@ -1,8 +1,11 @@
 import "reflect-metadata";
 import Express from "express";
+import { connectMongo } from "./db/connectMongo";
 import cors from "cors";
 import session from "express-session";
 import dotenv from "dotenv";
+import { CreateEventResolver } from "./modules/event/CreateEvent";
+import { EventsResolver } from "./modules/event/Events";
 import { meResolver } from "./modules/user/Me";
 import { __prod__ } from "./modules/constants/constants";
 import { SignOutResolver } from "./modules/user/SingOut";
@@ -18,8 +21,10 @@ import { createConnection } from "typeorm";
 const main = async () => {
   const app = Express();
 
-  await createConnection();
   dotenv.config();
+
+  connectMongo();
+  await createConnection();
 
   const schema = await buildSchema({
     resolvers: [
@@ -28,6 +33,8 @@ const main = async () => {
       LogoutResolver,
       SignOutResolver,
       meResolver,
+      CreateEventResolver,
+      EventsResolver,
     ],
     validate: false,
   });

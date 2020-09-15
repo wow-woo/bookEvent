@@ -7,6 +7,7 @@
     "start": "nodemon --exec ts-node src/server.ts"
   },
   "dependencies": {
+    "@types/mongoose": "^5.7.36",
     "apollo-server-express": "^2.17.0",
     "connect-redis": "^5.0.0",
     "dotenv": "^8.2.0",
@@ -14,6 +15,7 @@
     "express-session": "^1.17.1",
     "graphql": "^15.3.0",
     "ioredis": "^4.17.3",
+    "mongoose": "^5.10.5",
     "pg": "^8.3.3",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.0.0",
